@@ -1,8 +1,8 @@
 {
-  "name": "object-flattener",
-  "version": "1.0.0",
+  "name": "object-flatify",
+  "version": "1.0.5",
   "description": "Transforms complex nested objects and arrays into a single-level structure, including array indices in the column names. This conversion simplifies the representation of hierarchical data, making it easier to work with in tabular formats. By flattening the data, this tool enables direct binding to CSV, Excel, and other data table formats, facilitating data manipulation, analysis, and export. This is particularly useful for preparing data for reporting, visualization, or any application that requires a flat data structure",
-  "main": "main.js",
+  "main": "dist/main.js",
   "scripts": {
     "build": "tsc",
     "dev": "npx nodemon",
@@ -56,6 +56,8 @@
   ],
   "author": "Amitabh Anand",
   "license": "ISC",
+  "registry": "https://github.com/MakeAnIque/object-flattener",
+  "homepage": "https://github.com/MakeAnIque/object-flattener",
   "devDependencies": {
     "@babel/preset-env": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
