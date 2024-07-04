@@ -1,4 +1,3 @@
-import { Subscriber } from "rxjs";
 import { BATCH_COUNTER_SIZE } from "../libs/constants/object-flatten.constants";
 import {
   TObject,
