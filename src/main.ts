@@ -23,7 +23,10 @@ export class ObjectFlattener {
     return ObjectToDataTableTransformer.fromArray(objectSet, options);
   }
 
-  public static toDataTableFromFile() {
-    throw new Error("Method not implemented");
+  public static toDataTableFromFile(
+    path: string,
+    options: IObjectFlattenOption = { batchSize: BATCH_COUNTER_SIZE }
+  ) {
+    return ObjectToDataTableTransformer.fromFromLargeSet(path, options);
   }
 }
