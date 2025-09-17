@@ -14,8 +14,8 @@ class ObjectFlattener {
     static toDataTableFromListAsStream(objectSet, options = { batchSize: object_flatten_constants_1.BATCH_COUNTER_SIZE }) {
         return data_table_1.ObjectToDataTableTransformer.fromArray(objectSet, options);
     }
-    static toDataTableFromFile() {
-        throw new Error("Method not implemented");
+    static toDataTableFromFile(path, options = { batchSize: object_flatten_constants_1.BATCH_COUNTER_SIZE }) {
+        return data_table_1.ObjectToDataTableTransformer.fromFromLargeSet(path, options);
     }
 }
 exports.ObjectFlattener = ObjectFlattener;

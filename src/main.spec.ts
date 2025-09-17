@@ -108,4 +108,83 @@ describe("ObjectFlattener", () => {
       expect(true).toBe(false);
     }
   });
+  test("ObjectFlattener.toDataTableFromFile - large Data set processor from network", async () => {
+    const md = ObjectFlattener.toDataTableFromFile(
+      "https://si-file-manager-latest.onrender.com/uploads/ef8020a3-af40-458f-8970-87cfa7a586d7.json",
+      {
+        keysAsColumn: true,
+      }
+    ) as Readable;
+    try {
+      const { completed } = await new Promise<
+        Pick<IObjectFlattenedDataTableSet, TObjectFLattenedCompleted>
+      >((resolve, reject) => {
+        md.on(
+          "data",
+          (
+            data: Pick<IObjectFlattenedDataTableSet, TObjectFlattenedInProgress>
+          ) => {}
+        );
+        md.on(
+          "error",
+          (
+            error: Pick<IObjectFlattenedDataTableSet, TObjectFLattenedWithError>
+          ) => {
+            reject(error);
+          }
+        );
+        md.on(
+          "end",
+          (
+            data: Pick<IObjectFlattenedDataTableSet, TObjectFLattenedCompleted>
+          ) => {
+            resolve(data);
+          }
+        );
+      });
+      if (!completed) {
+        expect(true).toBe(false);
+      }
+    } catch (err) {
+      expect(true).toBe(false);
+    }
+  });
+  test("ObjectFlattener.toDataTableFromFile - large Data set processor from file", async () => {
+    const md = ObjectFlattener.toDataTableFromFile("./mock/file.json", {
+      keysAsColumn: true,
+    }) as Readable;
+    try {
+      const { completed } = await new Promise<
+        Pick<IObjectFlattenedDataTableSet, TObjectFLattenedCompleted>
+      >((resolve, reject) => {
+        md.on(
+          "data",
+          (
+            data: Pick<IObjectFlattenedDataTableSet, TObjectFlattenedInProgress>
+          ) => {}
+        );
+        md.on(
+          "error",
+          (
+            error: Pick<IObjectFlattenedDataTableSet, TObjectFLattenedWithError>
+          ) => {
+            reject(error);
+          }
+        );
+        md.on(
+          "end",
+          (
+            data: Pick<IObjectFlattenedDataTableSet, TObjectFLattenedCompleted>
+          ) => {
+            resolve(data);
+          }
+        );
+      });
+      if (!completed) {
+        expect(true).toBe(false);
+      }
+    } catch (err) {
+      expect(true).toBe(false);
+    }
+  });
 });
